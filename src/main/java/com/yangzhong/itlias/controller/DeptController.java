@@ -29,8 +29,9 @@ public class DeptController {
 
     @DeleteMapping
     public Result deleteDepts(@RequestParam Integer id) {
+        String deptName = deptService.getDeptNameById(id);
+        log.info("要删除的部门名字是 = {}",deptName);//怎么通过id返回一个部门名字
         deptService.deleteDeptsById(id);
-        log.info("要删除的对象是 = {}",id);//怎么通过id返回一个部门名字
         return Result.success();
     }
 }

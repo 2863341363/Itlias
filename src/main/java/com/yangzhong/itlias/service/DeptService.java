@@ -9,5 +9,5 @@ public interface DeptService {
 
     void deleteDeptsById(Integer id);
 
-    void getDeptNameById(Integer id);
+    String getDeptNameById(Integer id);
 }

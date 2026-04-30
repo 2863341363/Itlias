@@ -14,7 +14,7 @@ public class DeptServiceImp implements DeptService {
     public DeptServiceImp(DeptMapper deptMapper) {
         this.deptMapper = deptMapper;
     }
-
+//查询所有的部门
     @Override
     public List<Dept> selectAllDepts() {
         return deptMapper.selectDepts();
@@ -24,9 +24,9 @@ public class DeptServiceImp implements DeptService {
     public void deleteDeptsById(Integer id) {
         deptMapper.deleteDepts(id);
     }
-
+//通过部门id获取部门名字
     @Override
-    public void getDeptNameById(Integer id) {
-
+    public String getDeptNameById(Integer id) {
+       return deptMapper.getDeptsName(id);
     }
 }

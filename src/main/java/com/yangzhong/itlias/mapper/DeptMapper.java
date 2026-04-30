@@ -11,4 +11,6 @@ public interface DeptMapper {
     List<Dept> selectDepts();
 
     void deleteDepts(Integer id);
+
+    String getDeptsName(Integer id);
 }
