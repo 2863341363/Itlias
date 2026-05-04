@@ -23,15 +23,40 @@ public class DeptController {
     @GetMapping
     public Result<List<Dept>> selectDepts() {
         List<Dept> list = deptService.selectAllDepts();
-        log.info("查询所有的部门 = {}", list);
+        log.info("查询所有部门={}", list);
         return Result.success(list);
     }
 
     @DeleteMapping
     public Result deleteDepts(@RequestParam Integer id) {
         String deptName = deptService.getDeptNameById(id);
-        log.info("要删除的部门名字是 = {}",deptName);//怎么通过id返回一个部门名字
+        log.info("要删除的部门名字={}", deptName);
         deptService.deleteDeptsById(id);
+        return Result.success();
+    }
+
+    @PostMapping
+    public Result addDept(@RequestBody Dept dept) {
+        String deptName = dept.getName();
+        log.info("添加的部门名字={}", deptName);
+        deptService.addDept(deptName);
+        return Result.success();
+    }
+
+    @GetMapping("/{id}")
+    public Result selectDept(@PathVariable Integer id) {
+        Dept dept = deptService.selectDeptById(id);
+        log.info("查询部门结果={}", dept);
+        if (dept == null) {
+            return Result.error("部门不存在");
+        }
+        return Result.success(dept);
+    }
+
+    @PutMapping
+    public Result updateDept(@RequestBody Dept dept) {
+       deptService.updateDeptByIdAndName(dept);
+       log.info("修改后的部门名称={}", dept.getName());
         return Result.success();
     }
 }

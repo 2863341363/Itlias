@@ -16,4 +16,16 @@
     <select id="getDeptsName" resultType="java.lang.String">
         select name from dept where id = #{id}
     </select>
+
+    <insert id="addDept">
+        insert into dept(name,create_time,update_time) values (#{name},#{createTime},#{updateTime})
+    </insert>
+
+    <select id="selectDept" resultType="com.yangzhong.itlias.entity.Dept">
+        select * from dept where id = #{id}
+    </select>
+
+    <update id="updateDept">
+        update dept set name = #{name}, update_time = #{updateTime} where id = #{id}
+    </update>
 </mapper>
