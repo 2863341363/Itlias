@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangzhong.itlias.mapper.LogMapper">
+    <select id="selectLog" resultType="com.yangzhong.itlias.dto.LogOp">
+        select * from log
+    </select>
+
+    <insert id="insertLog">
+        insert into log(operate_emp_id, operate_time, class_name, method_name, method_params, return_value, cost_time,
+                        operate_emp_name) values(#{operateEmpId},#{operateTime},#{className},#{methodName},#{methodParams},#{returnValue},#{costTime},#{operateEmpName})
+    </insert>
+</mapper>
