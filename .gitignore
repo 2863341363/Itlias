@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local dependencies / runtime files ###
+.m2repo/
+*.log
+codex-app.log
+qq-only-proxifier.ppx

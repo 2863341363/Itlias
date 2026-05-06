@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yangzhong.itlias.mapper.ReportMapper">
+    <select id="sumEmpGender" resultType="java.util.Map">
+        select case when gender = 1 Then "男性员工" else "女性员工" end as name, count(*) as value
+        from emp
+        group by gender
+    </select>
+
+    <select id="sumEmpJob" resultType="java.util.Map">
+        select
+          case
+              when job = 1 then "班主任"
+            when job = 2 then "讲师"
+            when job = 3 then "学工主管"
+            when job = 4 then "教研主管"
+            when job = 5 then "咨询师"
+            else "其他"
+                end as name
+          ,count(*) as value from emp group by job
+    </select>
+
+    <select id="sumStudentCollege" resultType="java.util.Map">
+        select case
+                   when degree = 1 then "初中"
+                   when degree = 2 then "高中"
+                   when degree = 3 then "专科"
+                   when degree = 4 then "本科"
+                   when degree = 5 then "研究生" end as name,
+               count(*)                              as value
+        from student
+        group by degree
+    </select>
+
+
+    <select id="sumStudent" resultType="java.util.Map">
+        select  c.name
+            as name,count(*) as value from student s left outer join clazz c on s.clazz_id = c.id group by c.name;
+    </select>
+</mapper>
